@@ -1,5 +1,11 @@
 const menu = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.main-nav');
+if (!document.querySelector('link[href="effects.css"]')) {
+  const effects = document.createElement('link');
+  effects.rel = 'stylesheet';
+  effects.href = 'effects.css';
+  document.head.append(effects);
+}
 
 if (menu && nav) {
   menu.addEventListener('click', () => {
