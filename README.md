@@ -1,28 +1,28 @@
-# AeroBMSCE
+# AeroBMSCE Website Redesign
 
-A responsive, static showcase website for AeroBMSCE — the aerospace, aeromodelling and unmanned systems innovation club at BMS College of Engineering.
+A responsive, static website for AeroBMSCE — the aerospace, aeromodelling and unmanned-systems innovation club at BMS College of Engineering.
 
-## Run locally
+- Live site: [adityabunna07.github.io/AeroBMSCE_TASK_REPO](https://adityabunna07.github.io/AeroBMSCE_TASK_REPO/)
+- Stack: semantic HTML, CSS and lightweight vanilla JavaScript
+- Run locally: open `index.html` or serve the repository with a static-file server
 
-Open `index.html` in a browser, or serve this folder with any static-file server. No build process or backend is required.
+## Original website review
 
-## Original-site review
+The original site used a fixed-width `1480px` layout, which made it difficult to use on smaller screens. Typography was small and low contrast, image dimensions were hard-coded, and the oversized header reduced useful space. Navigation varied between pages and included a broken `contact.html` destination. It also had character-encoding problems and a slideshow script that could fail on pages where its target image was absent.
 
-The starting site had an oversized fixed `1480px` layout, making it awkward on smaller screens. Very small serif text had low contrast on a dark background, image dimensions were hard-coded, and the header logo consumed excessive vertical space. Navigation was inconsistent and included a broken `contact.html` link. The content also contained character-encoding errors and the slideshow script could fail when loaded without its target image.
+## Design direction and UI/UX decisions
 
-## Design route
+The redesign uses a dark aerospace HUD system: near-black navy surfaces, restrained cyan instrumentation accents, thin technical borders and a subtle engineering grid. It places the organisation’s real aircraft, UAV, competition and team photos at the centre of the experience.
 
-The revised site uses an editorial aviation direction: deep green, warm paper and high-visibility lime. Large display typography and generous spacing give the engineering work a sense of scale, while monospace labels nod to technical documentation. It tells one clear story — mission, work, results and partnership — with supporting Journey and Partners pages linked from the main calls to action.
+The homepage follows a clear progression: mission, engineering programmes, achievements and partnership. The supporting Journey and Partners pages retain the supplied competition and tier information. Responsive grids, readable type, a sticky navigation bar and a mobile menu make the experience work across screen sizes. The site also includes a lightweight aircraft cursor and takeoff animation that disable when reduced motion is requested.
 
-The CSS is responsive down to small screens, with a compact navigation menu, fluid type and layouts that collapse without hiding content. The project is framework-free so it can deploy directly through GitHub Pages.
+## Implementation edge case
 
-## An implementation edge case
+The supplied photographs have very different aspect ratios. Direct placement made card heights inconsistent and broke the project grid at narrower sizes. The solution uses constrained image regions with `object-fit: cover`, responsive grid breakpoints and image overlays. This preserves the images while keeping the layout stable on desktop and mobile.
 
-The supplied photos have very different aspect ratios. Without a shared treatment, the card grid jumped in height. I used constrained card areas with `object-fit: cover`, selected focal placements, and a responsive grid that changes shape at narrower widths. This keeps the visual rhythm consistent while preserving the images’ usefulness on every screen size.
+## GitHub Pages deployment
 
-## Deployment
-
-1. Push this project to your GitHub repository.
-2. Go to **Settings → Pages**.
-3. Select **Deploy from a branch**, then `main` and `/ (root)`.
-4. Save; GitHub will show the published `github.io` URL when deployment completes.
+1. Push the repository to GitHub.
+2. In **Settings → Pages**, choose **Deploy from a branch**.
+3. Select the `main` branch and the `/ (root)` folder.
+4. Save. GitHub publishes the site at `https://<username>.github.io/<repository-name>/` once the build finishes.
