@@ -6,19 +6,21 @@ A responsive, static website for AeroBMSCE — the aerospace, aeromodelling and 
 - Stack: semantic HTML, CSS and lightweight vanilla JavaScript
 - Run locally: open `index.html` or serve the repository with a static-file server
 
-## Original website review
+## 1. Original website flaws
 
-The original site used a fixed-width `1480px` layout, which made it difficult to use on smaller screens. Typography was small and low contrast, image dimensions were hard-coded, and the oversized header reduced useful space. Navigation varied between pages and included a broken `contact.html` destination. It also had character-encoding problems and a slideshow script that could fail on pages where its target image was absent.
+The original website used a fixed-width `1480px` layout, which made it difficult to use on smaller screens. Its typography was small and low contrast, image dimensions were hard-coded, and the oversized header used excessive vertical space. Navigation was inconsistent between pages and included a broken `contact.html` link. There were also character-encoding issues, and the slideshow script could fail when a page did not contain the image element it expected.
 
-## Design direction and UI/UX decisions
+## 2. Design route and UI/UX decisions
 
-The redesign uses a dark aerospace HUD system: near-black navy surfaces, restrained cyan instrumentation accents, thin technical borders and a subtle engineering grid. It places the organisation’s real aircraft, UAV, competition and team photos at the centre of the experience.
+I chose a dark aerospace HUD design system: near-black navy surfaces, restrained cyan instrumentation accents, thin technical borders and a subtle engineering-grid texture. This direction supports AeroBMSCE’s aviation and engineering identity while keeping the interface clean and readable. The supplied aircraft, UAV, competition and team photographs are used throughout the site rather than unrelated stock imagery.
 
-The homepage follows a clear progression: mission, engineering programmes, achievements and partnership. The supporting Journey and Partners pages retain the supplied competition and tier information. Responsive grids, readable type, a sticky navigation bar and a mobile menu make the experience work across screen sizes. The site also includes a lightweight aircraft cursor and takeoff animation that disable when reduced motion is requested.
+The homepage follows a direct story: mission, engineering programmes, achievements and partnership. Journey and Partners retain the supplied competition, team, contact and tier information. Responsive grids, readable typography, a sticky navigation bar, keyboard focus styles and a mobile menu make the site practical across screen sizes.
 
-## Implementation edge case
+## 3. Problem / edge case: aircraft takeoff simulation
 
-The supplied photographs have very different aspect ratios. Direct placement made card heights inconsistent and broke the project grid at narrower sizes. The solution uses constrained image regions with `object-fit: cover`, responsive grid breakpoints and image overlays. This preserves the images while keeping the layout stable on desktop and mobile.
+One edge case occurred while adding the hero-background aircraft takeoff simulation. The animated aircraft and runway lights initially sat behind the hero photograph because of CSS stacking order, so the animation existed in the page but was not visible. It also needed to remain decorative: it could not block the links, page text or normal navigation.
+
+I fixed this by giving the background photograph an explicit lower stacking layer and placing the simulation above it but below the hero content. The simulation uses `pointer-events: none`, so it cannot intercept clicks or text selection. It is implemented with lightweight inline SVG and CSS keyframes rather than a large animation dependency. For users who request reduced motion, it switches to a static aircraft and trail rather than disappearing entirely; on small screens it scales down to protect the layout.
 
 ## GitHub Pages deployment
 
