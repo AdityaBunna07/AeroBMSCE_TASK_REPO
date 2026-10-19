@@ -21,6 +21,15 @@ if (menu && nav) {
 const year = document.querySelector('#year');
 if (year) year.textContent = new Date().getFullYear();
 
+const competitiveAircraftImage = document.querySelector('.project-image img[src="images/photo1.jpg"]');
+const featuredAchievementImage = document.querySelector('.featured-result img[src="images/photo5.jpg"]');
+if (competitiveAircraftImage && featuredAchievementImage) {
+  competitiveAircraftImage.src = 'images/photo5.jpg';
+  competitiveAircraftImage.alt = 'AeroBMSCE team';
+  featuredAchievementImage.src = 'images/photo1.jpg';
+  featuredAchievementImage.alt = 'AeroBMSCE aircraft at a competition';
+}
+
 if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
   const observer = new IntersectionObserver(entries => entries.forEach(entry => {
     if (entry.isIntersecting) {
